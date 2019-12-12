@@ -5,7 +5,8 @@ import { url } from "../actions/constants";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
-import Button from './VideoButton';
+import VideoButton from "./VideoButton";
+import MeetButton from "./MeetButton";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -36,11 +37,26 @@ const useStyles = makeStyles(theme => ({
     lineHeight: "20px",
     display: "block",
     marginBottom: "10px"
+  },
+  rightBlock: {
+    padding: "30px 72px 30px 21px",
+    justifyContent: "space-around",
+    display: "flex",
+    flexDirection: "column"
   }
 }));
 
 const Card = props => {
-  const { name, id, photo_path, gender, age, character, region } = props.row;
+  const {
+    name,
+    id,
+    photo_path,
+    gender,
+    age,
+    character,
+    region,
+    video_link
+  } = props.row;
   const classes = useStyles();
   let imgUrl = url + photo_path;
 
@@ -60,7 +76,10 @@ const Card = props => {
             <div className={classes.imgWrapp}>
               <img className={classes.imgItem} src={imgUrl} alt="Avatar" />
             </div>
-            <div><Button /></div>
+            <div className={classes.rightBlock}>
+                <VideoButton link={video_link} />
+                <MeetButton id={id}/>
+            </div>
           </Paper>
         </Grid>
       </Grid>

@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
         top: '50%',
         left: '50%'
     },
+    textLeft : {
+        textAlign: 'left',
+    }
   }));
 
 
@@ -38,7 +41,7 @@ const CardList = (props) => {
        loading ?
         (<div className={classes.loader}><CircularProgress /></div>) :
          (  <>
-            <p>{total}</p>
+            <p className={classes.textLeft}>Нашлось {total} анкет</p>
             <div>
                 {cards}
             </div>
@@ -60,7 +63,6 @@ const mapStateToProps = state => {
         rows : state.rows,
         total : state.total
     }
-    
 }
 
 export default connect(mapStateToProps , mapDispatchToProps)(CardList);

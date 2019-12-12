@@ -26,8 +26,4 @@ export const Fetching = () => dispatch => {
         payload: err.message
       });
     });
-
-  return {
-    type: GET_DATA_STARTED
-  };
 };
